@@ -5,7 +5,7 @@ import org.example.utils.DataController;
 public class FindCommand extends AbstractCommand {
 
     public FindCommand(String line) {
-        super("\""+line);
+        super(line);
     }
 
     @Override

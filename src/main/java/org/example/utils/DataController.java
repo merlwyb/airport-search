@@ -19,11 +19,10 @@ public class DataController {
         long rowCount = 0;
 
         try (BufferedReader br = new BufferedReader(new FileReader("airports.csv"))) {
-            String line1;
-            while ((line1 = br.readLine()) != null) {
-                String[] values = line1.split(",");
-
-                if (values[columnNum].toLowerCase().startsWith(line)) {
+            String row;
+            while ((row = br.readLine()) != null) {
+                String[] values = row.split(",");
+                if (values[columnNum].toLowerCase().replace("\"", "").startsWith(line)) {
                     results.put(values[columnNum], Arrays.asList(values));
                     rowCount++;
                 }
@@ -36,8 +35,7 @@ public class DataController {
 
         results.forEach((a, b) -> System.out.println(a + b));
         long millis = (System.currentTimeMillis() - parseTime);
-        System.out.println("Количество найденных записей: " + rowCount);
-        System.out.println("Время затраченное на поиск: " + millis + " мс");
+        System.out.println("Количество найденных записей: " + rowCount + ", Время затраченное на поиск: " + millis + " мс");
     }
 
     public Integer getColumnNum() {

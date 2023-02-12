@@ -14,7 +14,6 @@ public class ConsoleListener {
         this.isRunning = true;
     }
 
-
     public void listen(DataController dataController) {
         while (isRunning) {
             AbstractCommand command = readLine();
