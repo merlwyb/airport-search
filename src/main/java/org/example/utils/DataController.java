@@ -16,7 +16,6 @@ public class DataController {
         long parseTime = System.currentTimeMillis();
 
         Map<String, List<String>> results = new TreeMap<>();
-        long rowCount = 0;
 
         try (BufferedReader br = new BufferedReader(new FileReader("airports.csv"))) {
             String row;
@@ -24,7 +23,6 @@ public class DataController {
                 String[] values = row.split(",");
                 if (values[columnNum].toLowerCase().replace("\"", "").startsWith(line)) {
                     results.put(values[columnNum], Arrays.asList(values));
-                    rowCount++;
                 }
 
             }
@@ -35,7 +33,7 @@ public class DataController {
 
         results.forEach((a, b) -> System.out.println(a + b));
         long millis = (System.currentTimeMillis() - parseTime);
-        System.out.println("Количество найденных записей: " + rowCount + ", Время затраченное на поиск: " + millis + " мс");
+        System.out.println("Количество найденных записей: " + results.size() + ", Время затраченное на поиск: " + millis + " мс");
     }
 
     public Integer getColumnNum() {
