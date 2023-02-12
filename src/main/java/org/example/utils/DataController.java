@@ -30,7 +30,7 @@ public class DataController {
             }
 
         } catch (IOException e) {
-            throw new RuntimeException(e);
+            throw new RuntimeException("Файл airports.csv отсутствует в папке");
         }
 
         results.forEach((a, b) -> System.out.println(a + b));
